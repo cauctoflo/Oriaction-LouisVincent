@@ -1,58 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../src/output.css">
 </head>
+
 <body class="relative">
 
-    <!-- Image de fond fixe en pleine largeur et hauteur de l'écran -->
-    <div class="fixed inset-0 w-screen h-screen bg-cover bg-center" style="background-image: url('../src/images/blank-792125_1920.jpg');"></div>
+    <div class="fixed inset-0 w-screen h-screen bg-cover bg-center"
+        style="background-image: url('../src/images/blank-792125_1920.jpg');"></div>
 
-    <!-- Conteneur principal pour le formulaire avec défilement par-dessus l'image -->
-    <div class="relative flex items-center my-10 mx-5 justify-center min-h-screen">
+    <!-- Premier menu avec z-index 30 -->
+    <div class="relative flex items-center my-10 mx-5 justify-center min-h-screen z-30" style="display: none;"
+        id="Data">
         <div class="bg-white bg-opacity-90 shadow-lg mx-auto w-full max-w-[700px] p-12 rounded-2xl">
+            <a href="" onclick="MenuOpen()"
+                class="text-sm text-[#780b10] hover:text-[#780b10]/75 font-medium transition duration-300">
+                ← Retour
+            </a>
             <div class="text-center mb-8">
-                <img src="../src/images/logo.png" alt="../src/logo du Lycée Louis Vincent" class="mx-auto mb-5 w-32 h-32">
+
+                <img src="../src/images/logo.png" alt="../src/logo du Lycée Louis Vincent"
+                    class="mx-auto mb-5 w-32 h-32">
                 <h1 class="text-3xl font-bold text-[#07074D] mb-5">Formulaire Oriaction</h1>
                 <p class="mb-5 text-base text-[#6B7280]">
-                    Bienvenue sur le recensement d'informations du lycée Louis Vincent. Veuillez remplir ce formulaire si vous êtes intéressé par les formations proposées par notre établissement. 
-                    Vos informations nous aideront à vous guider vers vos besoins et à vous fournir les meilleures options éducatives possibles.
+                    Bienvenue sur le recensement d'informations du lycée Louis Vincent. Veuillez remplir ce formulaire
+                    si vous êtes intéressé par les formations proposées par notre établissement.
+                    Vos informations nous aideront à vous guider vers vos besoins et à vous fournir les meilleures
+                    options éducatives possibles.
                 </p>
-                <p class="text-sm mt-2">Les questions marquées d'un <span class="text-red-500 font-bold">*</span> rouge sont obligatoires.</p>
+                <p class="text-sm mt-2">Les questions marquées d'un <span class="text-red-500 font-bold">*</span> rouge
+                    sont obligatoires.</p>
             </div>
-            
+        </div>
+    </div>
+
+    <!-- Conteneur principal pour le formulaire avec z-index 20 -->
+    <div class="relative flex items-center my-10 mx-5 justify-center min-h-screen z-20" id="Form">
+        <div class="bg-white bg-opacity-90 shadow-lg mx-auto w-full max-w-[700px] p-12 rounded-2xl">
+            <div class="text-center mb-8">
+                <img src="../src/images/logo.png" alt="../src/logo du Lycée Louis Vincent"
+                    class="mx-auto mb-5 w-32 h-32">
+                <h1 class="text-3xl font-bold text-[#07074D] mb-5">Formulaire Oriaction</h1>
+                <p class="mb-5 text-base text-[#6B7280]">
+                    Bienvenue sur le recensement d'informations du lycée Louis Vincent. Veuillez remplir ce formulaire
+                    si vous êtes intéressé par les formations proposées par notre établissement.
+                    Vos informations nous aideront à vous guider vers vos besoins et à vous fournir les meilleures
+                    options éducatives possibles.
+                </p>
+                <p class="text-sm mt-2">Les questions marquées d'un <span class="text-red-500 font-bold">*</span> rouge
+                    sont obligatoires.</p>
+            </div>
+
             <!-- Formulaire -->
-            <form id="my-form" action="/store" method="POST">
+            <form id="my-form" action="src/store.php" method="POST">
                 <div class="mb-5 mt-6">
-                    <label for="name" class="mb-3 block text-base font-medium text-[#07074D]">Nom<span class="text-red-500 font-bold">*</span></label>
-                    <input type="text" name="lastname" id="lastname" placeholder="Nom" required class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                    <label for="name" class="mb-3 block text-base font-medium text-[#07074D]">Nom<span
+                            class="text-red-500 font-bold">*</span></label>
+                    <input type="text" name="lastname" id="lastname" placeholder="Nom" required
+                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                 </div>
 
                 <!-- Champ Prénom -->
                 <div class="mb-5">
-                    <label for="firstname" class="mb-3 block text-base font-medium text-[#07074D]">Prénom<span class="text-red-500 font-bold">*</span></label>
-                    <input type="text" name="firstname" id="firstname" placeholder="Prénom" required class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                    <label for="firstname" class="mb-3 block text-base font-medium text-[#07074D]">Prénom<span
+                            class="text-red-500 font-bold">*</span></label>
+                    <input type="text" name="firstname" id="firstname" placeholder="Prénom" required
+                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                 </div>
 
                 <!-- Champ Téléphone -->
                 <div class="mb-5">
                     <label for="phone" class="mb-3 block text-base font-medium text-[#07074D]">Téléphone</label>
-                    <input type="text" name="phone" id="phone" placeholder="Numéro de téléphone" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                    <input type="text" name="phone" id="phone" placeholder="Numéro de téléphone"
+                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                 </div>
 
                 <!-- Champ Email -->
                 <div class="mb-5">
-                    <label for="email" class="mb-3 block text-base font-medium text-[#07074D]">Adresse Email<span class="text-red-500 font-bold">*</span></label>
-                    <input type="email" name="email" id="email" placeholder="Adresse email" required class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                    <label for="email" class="mb-3 block text-base font-medium text-[#07074D]">Adresse Email<span
+                            class="text-red-500 font-bold">*</span></label>
+                    <input type="email" name="email" id="email" placeholder="Adresse email" required
+                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                 </div>
 
                 <!-- Sélection Formation et Note d'Intérêt -->
                 <div id="formation-container" class="mb-5">
-                    <label for="formation" class="mb-3 block text-base font-medium text-[#07074D]">Formation <span class="text-red-500 font-bold">*</span></label>
-                    <select name="formation[]" required class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
+                    <label for="formation" class="mb-3 block text-base font-medium text-[#07074D]">Formation <span
+                            class="text-red-500 font-bold">*</span></label>
+                    <select name="formation[]" required
+                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
                         <option value="" disabled selected>Choisissez une formation</option>
                         <option value="bac_general">Bac général</option>
                         <option value="technologique_sti2d">Technologique - STI2D</option>
@@ -66,8 +106,11 @@
                         <option value="bts_chimie">BTS - CHIMIE</option>
                     </select>
 
-                    <label for="interest-rating" class="mt-4 mb-3 block text-base font-medium text-[#07074D]">Sur une échelle de 1 à 10, quel est votre intérêt pour cette formation ? <span class="text-red-500 font-bold">*</span></label>
-                    <select name="interest-rating[]" required class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
+                    <label for="interest-rating" class="mt-4 mb-3 block text-base font-medium text-[#07074D]">Sur une
+                        échelle de 1 à 10, quel est votre intérêt pour cette formation ? <span
+                            class="text-red-500 font-bold">*</span></label>
+                    <select name="interest-rating[]" required
+                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
                         <option value="" disabled selected>Notez votre intérêt</option>
                         <option value="1">1 - Très faible</option>
                         <option value="2">2</option>
@@ -78,25 +121,45 @@
                         <option value="7">7</option>
                         <option value="8">8</option>
                         <option value="9">9</option>
-                </select>
+                    </select>
                 </div>
 
                 <!-- Bouton Ajouter une autre formation -->
                 <div class="mb-5">
-                    <button id="add-formation-btn" type="button" onclick="addFormation()" class="flex items-center space-x-2 text-sm text-[#780b10] hover:text-[#780b10]/75 font-medium transition duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                    <button id="add-formation-btn" type="button" onclick="addFormation()"
+                        class="flex items-center space-x-2 text-sm text-[#780b10] hover:text-[#780b10]/75 font-medium transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                         </svg>
                         <span>Ajouter une autre formation</span>
                     </button>
                 </div>
 
-                <!-- Bouton de soumission avec chargement -->
-                <button id="submit-button" type="button" onclick="simulateLoading()" class="hover:shadow-form w-full rounded-md bg-[#780b10] hover:bg-[#780b10]/75 py-3 h-10 flex items-center justify-center text-base font-semibold text-white outline-none border-2 border-transparent hover:border-[#780b10] transition duration-300">Envoyer</button>
-                
-                <div id="loading-bar" class="hidden relative w-full h-10 bg-gray-200 rounded-full mt-4 overflow-hidden">
-                    <div id="loading-progress" class="absolute top-0 left-0 rounded-full h-full bg-[#780b10] transition-all duration-500 ease-out"></div>
+                <div
+                    class="w-full py-3 px-2 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
+                    <input type="checkbox" name="accept" id="accept" class="mr-2"><span
+                        class="text-sm mb-4 font-base">J'accepte
+                        l'utilisation de mes <span onclick="MenuOpen()"
+                            style="text-decoration: underline; cursor: pointer;">données</span>
+                        par
+                        l'établissement</span></span>
+
+
                 </div>
+
+                <!-- Bouton de soumission avec chargement -->
+                <button id="submit-button" type="button" onclick="simulateLoading()"
+                    class="hover:shadow-form w-full rounded-md bg-[#780b10] hover:bg-[#780b10]/75 py-3 h-10 flex items-center justify-center text-base font-semibold text-white outline-none border"
+                    <button id=" submit-button" type="button" onclick="simulateLoading()"
+                    class="hover:shadow-form w-full rounded-md bg-[#780b10] hover:bg-[#780b10]/75 py-3 h-10 flex items-center justify-center text-base font-semibold text-white outline-none border-2 border-transparent hover:border-[#780b10] transition duration-300">Envoyer</button>
+
+                <div id="loading-bar" class="hidden relative w-full h-10 bg-gray-200 rounded-full mt-4 overflow-hidden">
+                    <div id="loading-progress"
+                        class="absolute top-0 left-0 rounded-full h-full bg-[#780b10] transition-all duration-500 ease-out">
+                    </div>
+                </div>
+                </button>
             </form>
         </div>
     </div>
@@ -109,19 +172,36 @@
             setTimeout(() => { document.getElementById('my-form').submit(); }, 400);
         }
     </script>
+
+    <script>
+
+        let menuOpened = false;
+
+        function MenuOpen() {
+            if (menuOpened) return;
+            menuOpened = true;
+
+            var x = document.getElementById("Data");
+            var y = document.getElementById('Form');
+            x.style.display = x.style.display === "none" ? "flex" : "none";
+            y.style.display = y.style.display === "none" ? "flex" : "none";
+        }
+
+    </script>
+
     <script>
         let formationCount = 1;  // Initialiser le compteur de formations (commence à 1 car il y en a déjà une par défaut)
-    
+
         function addFormation() {
             if (formationCount >= 3) {
                 alert("Vous ne pouvez ajouter que 3 formations au maximum.");
                 return;
             }
-    
+
             // Créer un conteneur pour la nouvelle formation et la note
             const formationGroup = document.createElement('div');
             formationGroup.classList.add('mb-5', 'formation-group');
-    
+
             // Générer le HTML pour la sélection de la formation
             formationGroup.innerHTML = `
                 <div class="flex justify-between items-center">
@@ -159,25 +239,25 @@
                     <option value="10">10 - Très élevé</option>
                 </select>
             `;
-    
+
             // Ajouter le conteneur de la nouvelle formation au conteneur principal
             document.getElementById('formation-container').appendChild(formationGroup);
             formationCount++;
-    
+
             // Désactiver le bouton si on atteint la limite de 3 formations
             if (formationCount >= 3) {
                 document.getElementById('add-formation-btn').disabled = true;
                 document.getElementById('add-formation-btn').classList.add('opacity-50', 'cursor-not-allowed');
             }
         }
-    
+
         // Fonction pour supprimer une formation
         function removeFormation(button) {
             // Supprimer l'élément parent de la croix (le groupe de la formation)
             const formationGroup = button.closest('.formation-group');
             formationGroup.remove();
             formationCount--;
-    
+
             // Réactiver le bouton si on a moins de 3 formations
             if (formationCount < 3) {
                 document.getElementById('add-formation-btn').disabled = false;
@@ -185,21 +265,22 @@
             }
         }
     </script>
-    
+
     <script>
         function simulateLoading() {
             // Masquer le bouton et afficher la barre de chargement
             document.getElementById('submit-button').classList.add('hidden');
             document.getElementById('loading-bar').classList.remove('hidden');
-    
+
             let progress = document.getElementById('loading-progress');
             progress.style.width = "0%"; // Réinitialiser la largeur au cas où
             setTimeout(() => progress.style.width = "100%", 200);
-    
+
             setTimeout(() => {
                 document.getElementById('my-form').submit();
             }, 400); // Durée ajustable
         }
     </script>
 </body>
+
 </html>
