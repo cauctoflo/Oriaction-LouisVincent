@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="../src/output.css">
 </head>
 <body class="relative">
 
     <!-- Image de fond fixe en pleine largeur et hauteur de l'écran -->
-    <div class="fixed inset-0 w-screen h-screen bg-cover bg-center" style="background-image: url('blank-792125_1920.jpg');"></div>
+    <div class="fixed inset-0 w-screen h-screen bg-cover bg-center" style="background-image: url('../src/images/blank-792125_1920.jpg');"></div>
 
     <!-- Conteneur principal pour le formulaire avec défilement par-dessus l'image -->
     <div class="relative flex items-center my-10 mx-5 justify-center min-h-screen">
         <div class="bg-white bg-opacity-90 shadow-lg mx-auto w-full max-w-[700px] p-12 rounded-2xl">
             <div class="text-center mb-8">
-                <img src="logo.png" alt="Logo du Lycée Louis Vincent" class="mx-auto mb-5 w-32 h-32">
+                <img src="../src/images/logo.png" alt="../src/logo du Lycée Louis Vincent" class="mx-auto mb-5 w-32 h-32">
                 <h1 class="text-3xl font-bold text-[#07074D] mb-5">Formulaire Oriaction</h1>
                 <p class="mb-5 text-base text-[#6B7280]">
                     Bienvenue sur le recensement d'informations du lycée Louis Vincent. Veuillez remplir ce formulaire si vous êtes intéressé par les formations proposées par notre établissement. 
@@ -25,16 +25,16 @@
             </div>
             
             <!-- Formulaire -->
-            <form id="my-form" action="store.php" method="POST">
+            <form id="my-form" action="/store" method="POST">
                 <div class="mb-5 mt-6">
                     <label for="name" class="mb-3 block text-base font-medium text-[#07074D]">Nom<span class="text-red-500 font-bold">*</span></label>
-                    <input type="text" name="name" id="name" placeholder="Nom" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                    <input type="text" name="lastname" id="lastname" placeholder="Nom" required class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                 </div>
 
                 <!-- Champ Prénom -->
                 <div class="mb-5">
                     <label for="firstname" class="mb-3 block text-base font-medium text-[#07074D]">Prénom<span class="text-red-500 font-bold">*</span></label>
-                    <input type="text" name="firstname" id="firstname" placeholder="Prénom" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                    <input type="text" name="firstname" id="firstname" placeholder="Prénom" required class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                 </div>
 
                 <!-- Champ Téléphone -->
@@ -45,8 +45,8 @@
 
                 <!-- Champ Email -->
                 <div class="mb-5">
-                    <label for="email" class="mb-3 block text-base font-medium text-[#07074D]">Adresse Email</label>
-                    <input type="email" name="email" id="email" placeholder="Enter your email" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                    <label for="email" class="mb-3 block text-base font-medium text-[#07074D]">Adresse Email<span class="text-red-500 font-bold">*</span></label>
+                    <input type="email" name="email" id="email" placeholder="Adresse email" required class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                 </div>
 
                 <!-- Sélection Formation et Note d'Intérêt -->
@@ -54,11 +54,16 @@
                     <label for="formation" class="mb-3 block text-base font-medium text-[#07074D]">Formation <span class="text-red-500 font-bold">*</span></label>
                     <select name="formation[]" required class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
                         <option value="" disabled selected>Choisissez une formation</option>
-                        <option value="informatique">Informatique</option>
-                        <option value="gestion">Gestion</option>
-                        <option value="commerce">Commerce</option>
-                        <option value="sciences">Sciences</option>
-                        <option value="arts">Arts</option>
+                        <option value="bac_general">Bac général</option>
+                        <option value="technologique_sti2d">Technologique - STI2D</option>
+                        <option value="technologique_stl">Technologique - STL</option>
+                        <option value="cpge">CPGE</option>
+                        <option value="tsi">TSI</option>
+                        <option value="bts_cpi">BTS - CPI</option>
+                        <option value="bts_cprp">BTS - CPRP</option>
+                        <option value="bts_crsa">BTS - CRSA</option>
+                        <option value="bts_cira">BTS - CIRA</option>
+                        <option value="bts_chimie">BTS - CHIMIE</option>
                     </select>
 
                     <label for="interest-rating" class="mt-4 mb-3 block text-base font-medium text-[#07074D]">Sur une échelle de 1 à 10, quel est votre intérêt pour cette formation ? <span class="text-red-500 font-bold">*</span></label>
@@ -105,7 +110,7 @@
         }
     </script>
     <script>
-        let formationCount = 1; // Compteur pour les formations ajoutées
+        let formationCount = 1;  // Initialiser le compteur de formations (commence à 1 car il y en a déjà une par défaut)
     
         function addFormation() {
             if (formationCount >= 3) {
@@ -119,20 +124,28 @@
     
             // Générer le HTML pour la sélection de la formation
             formationGroup.innerHTML = `
-                <label class="mb-3 mt-4 block text-base font-medium text-[#07074D]">Formation <span class="text-red-500 font-bold">*</span></label>
-                <select name="formation[]" required
-                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
+                <div class="flex justify-between items-center">
+                    <label class="mb-3 mt-4 block text-base font-medium text-[#07074D]">Formation <span class="text-red-500 font-bold">*</span></label>
+                    <!-- Bouton de suppression -->
+                    <button type="button" class="text-red-500 text-lg" onclick="removeFormation(this)">×</button>
+                </div>
+                <select name="formation[]" required class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
                     <option value="" disabled selected>Choisissez une formation</option>
-                    <option value="informatique">Informatique</option>
-                    <option value="gestion">Gestion</option>
-                    <option value="commerce">Commerce</option>
-                    <option value="sciences">Sciences</option>
-                    <option value="arts">Arts</option>
+
+                <option value="bac_general">Bac général</option>
+                <option value="technologique_sti2d">Technologique - STI2D</option>
+                <option value="technologique_stl">Technologique - STL</option>
+                <option value="cpge">CPGE</option>
+                <option value="tsi">TSI</option>
+                <option value="bts_cpi">BTS - CPI</option>
+                <option value="bts_cprp">BTS - CPRP</option>
+                <option value="bts_crsa">BTS - CRSA</option>
+                <option value="bts_cira">BTS - CIRA</option>
+                <option value="bts_chimie">BTS - CHIMIE</option>
                 </select>
     
                 <label class="mt-4 mb-3 block text-base font-medium text-[#07074D]">Sur une échelle de 1 à 10, quel est votre intérêt pour cette formation ? <span class="text-red-500 font-bold">*</span></label>
-                <select name="interest-rating[]" required
-                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
+                <select name="interest-rating[]" required class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
                     <option value="" disabled selected>Notez votre intérêt</option>
                     <option value="1">1 - Très faible</option>
                     <option value="2">2</option>
@@ -157,7 +170,22 @@
                 document.getElementById('add-formation-btn').classList.add('opacity-50', 'cursor-not-allowed');
             }
         }
+    
+        // Fonction pour supprimer une formation
+        function removeFormation(button) {
+            // Supprimer l'élément parent de la croix (le groupe de la formation)
+            const formationGroup = button.closest('.formation-group');
+            formationGroup.remove();
+            formationCount--;
+    
+            // Réactiver le bouton si on a moins de 3 formations
+            if (formationCount < 3) {
+                document.getElementById('add-formation-btn').disabled = false;
+                document.getElementById('add-formation-btn').classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+        }
     </script>
+    
     <script>
         function simulateLoading() {
             // Masquer le bouton et afficher la barre de chargement
