@@ -25,15 +25,28 @@
 
                 <img src="../src/images/logo.png" alt="../src/logo du Lycée Louis Vincent"
                     class="mx-auto mb-5 w-32 h-32">
-                <h1 class="text-3xl font-bold text-[#07074D] mb-5">Formulaire Oriaction</h1>
-                <p class="mb-5 text-base text-[#6B7280]">
-                    Bienvenue sur le recensement d'informations du lycée Louis Vincent. Veuillez remplir ce formulaire
-                    si vous êtes intéressé par les formations proposées par notre établissement.
-                    Vos informations nous aideront à vous guider vers vos besoins et à vous fournir les meilleures
-                    options éducatives possibles.
+                <h2 class="text-xl font-bold text-[#07074D] mb-4">Utilisation des données personnelles</h2>
+                <p class="text-[#6B7280] mb-4 text-justify">
+                    Le lycée collecte et utilise vos données personnelles dans le cadre de notre suivi pédagogique et de
+                    notre communication pour :
                 </p>
-                <p class="text-sm mt-2">Les questions marquées d'un <span class="text-red-500 font-bold">*</span> rouge
-                    sont obligatoires.</p>
+                <ul class="list-disc list-inside space-y-2 text-[#6B7280] mb-4 text-left">
+                    <li>vous recontacter suite à votre visite et recueillir votre avis,</li>
+                    <li>vous inviter à des journées portes ouvertes, forums métiers, et autres événements pédagogiques,
+                    </li>
+                    <li>vous proposer des immersions ou stages d’observation pour découvrir nos filières et parcours,
+                    </li>
+                    <li>vous envoyer des informations sur les filières, les options, et les projets éducatifs du lycée,
+                    </li>
+                    <li>vous tenir informé(e) des nouveautés et des opportunités pédagogiques,</li>
+                    <li>recueillir vos retours pour adapter et améliorer notre offre éducative et nos actions de
+                        sensibilisation.</li>
+                </ul>
+                <p class="text-[#6B7280] mb-4 text-justify">
+                    Ces informations sont strictement confidentielles et sont utilisées uniquement dans le cadre de
+                    notre mission éducative. Conformément aux réglementations en vigueur sur la protection des données
+                    personnelles, vous disposez d’un droit d’accès, de rectification, et de suppression de vos données.
+                </p>
             </div>
         </div>
     </div>
@@ -46,10 +59,11 @@
                     class="mx-auto mb-5 w-32 h-32">
                 <h1 class="text-3xl font-bold text-[#07074D] mb-5">Formulaire Oriaction</h1>
                 <p class="mb-5 text-base text-[#6B7280]">
-                    Bienvenue sur le recensement d'informations du lycée Louis Vincent. Veuillez remplir ce formulaire
-                    si vous êtes intéressé par les formations proposées par notre établissement.
-                    Vos informations nous aideront à vous guider vers vos besoins et à vous fournir les meilleures
-                    options éducatives possibles.
+                    Bienvenue sur le formulaire d’information du lycée Louis Vincent. <br>
+                    Merci de prendre le temps de le remplir si vous souhaitez en savoir plus sur les formations
+                    proposées par notre établissement. <br>
+                    Vos réponses nous permettront de mieux comprendre vos attentes, de vous orienter efficacement et de
+                    vous proposer les parcours éducatifs les plus adaptés à vos besoins.
                 </p>
                 <p class="text-sm mt-2">Les questions marquées d'un <span class="text-red-500 font-bold">*</span> rouge
                     sont obligatoires.</p>
@@ -121,6 +135,7 @@
                         <option value="7">7</option>
                         <option value="8">8</option>
                         <option value="9">9</option>
+                        <option value="10">10 - Très élevé</option>
                     </select>
                 </div>
 
@@ -280,6 +295,39 @@
                 document.getElementById('my-form').submit();
             }, 400); // Durée ajustable
         }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("my-form");
+
+            // Restaurer les données du localStorage
+            const savedData = JSON.parse(localStorage.getItem("formData")) || {};
+            for (const [name, value] of Object.entries(savedData)) {
+                const field = form.elements[name];
+                if (field) {
+                    if (field.type === "checkbox" || field.type === "radio") {
+                        field.checked = value;
+                    } else {
+                        field.value = value;
+                    }
+                }
+            }
+
+            // Sauvegarder les changements en temps réel
+            form.addEventListener("input", function (event) {
+                const target = event.target;
+                const formData = JSON.parse(localStorage.getItem("formData")) || {};
+
+                if (target.type === "checkbox" || target.type === "radio") {
+                    formData[target.name] = target.checked;
+                } else {
+                    formData[target.name] = target.value;
+                }
+
+                localStorage.setItem("formData", JSON.stringify(formData));
+            });
+        });
+
     </script>
 </body>
 
