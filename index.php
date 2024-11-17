@@ -3,7 +3,7 @@
 $routes = [
     '/' => 'formu.html',
     '/store' => 'store.php',
-    '/contact' => 'contact.html'
+    '/save' => '/assets/save.php'
 ];
 
 // Get the current path
