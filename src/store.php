@@ -193,7 +193,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <?php if ($insert_success): ?>
                     <h1 class="text-3xl font-bold text-[#07074D] mb-5">À très bientôt !</h1>
                     <p class="mb-5 text-base text-[#6B7280]">
-                        Merci pour vos réponses ! Nous sommes ravis d’avoir pu vous accompagner lors de cet événement d’orientation. Vos retours sont précieux pour nous aider à améliorer chaque édition. Nous avons hâte de vous retrouver lors de nos prochains événements ! <br> Pour plus d"informations rendez-vous sur notre <a href="https://www.lycee-louis-vincent.fr/"> <span class="underline">site</span></a> !
+                        Merci pour vos réponses ! Nous sommes ravis d’avoir pu vous accompagner lors de cet événement d’orientation. Vos retours sont précieux pour nous aider à améliorer chaque édition. Nous avons hâte de vous retrouver lors de nos prochains événements ! <br> Pour plus d'informations rendez-vous sur notre <a href="https://www.lycee-louis-vincent.fr/"> <span class="underline">site</span></a> ! <br> Vous souhaitez nous contacter ? Cliquez juste <a href="https://www.lycee-louis-vincent.fr/"> <span class="underline">ici</span></a> !
                     </p>
                 <?php endif; ?>
                 
